@@ -10,8 +10,9 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "npm run check-format && npm run check-lint && npm run check-types",
-    "test-with-build": "npm run test-all && npm run build"
+    "test-all": "npm run format && npm run check-lint && npm run check-types",
+    "test-with-build": "npm run test-all && npm run build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.7.2",
@@ -21,6 +22,11 @@
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run test-all"
+    ]
   },
   "devDependencies": {
     "@types/node": "16.11.10",
@@ -33,6 +39,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.27.1",
     "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
     "prettier": "^2.5.0",
     "typescript": "4.4.2"
   }
